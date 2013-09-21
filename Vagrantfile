@@ -7,4 +7,22 @@ Vagrant.configure('2') do |config|
 
   config.cache.auto_detect = true
   config.cache.scope = :machine
+
+  config.vm.provision :shell, inline: 'gem install chef --no-rdoc --no-ri'
+
+  config.vm.provision :chef_solo do |chef|
+    chef.add_recipe 'apt'
+    chef.add_recipe 'git'
+    chef.add_recipe 'python'
+    chef.add_recipe 'rvm::vagrant'
+    chef.add_recipe 'rvm::system'
+    chef.add_recipe 'rvm::gem_package'
+
+    chef.json = {
+      rvm: {
+        default_ruby: 'ruby-2.0.0',
+        vagrant: { system_chef_solo: '/opt/vagrant_ruby/bin/chef-solo' }
+      }
+    }
+  end
 end
