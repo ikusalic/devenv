@@ -28,9 +28,18 @@ GIT
     rvm (0.9.1)
       chef_gem (>= 0.0.0)
 
+GIT
+  remote: git://github.com/ikusalic/chef-vim-setup.git
+  ref: master
+  sha: 7ffe2c8a3455744d414365cb1ff32b91c3dbcd45
+  specs:
+    vim-setup (0.1.2)
+      git (>= 0.0.0)
+
 DEPENDENCIES
   apt (>= 0)
   git (>= 0)
   python (>= 0)
   rvm (>= 0)
+  vim-setup (>= 0)
 
